@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libgdiplus \
     libc6-dev \
     fontconfig \
+    software-properties-common \
     fonts-dejavu \
     fonts-dejavu-core \
     fonts-dejavu-extra \
@@ -21,8 +22,16 @@ RUN apt-get update && apt-get install -y \
     fonts-farsiweb \
     fonts-freefont-ttf \
     fonts-opensymbol \
-    && fc-cache -f -v \
     && rm -rf /var/lib/apt/lists/*
+
+# (اختياري) تثبيت خطوط Microsoft Core Fonts
+# قم بإلغاء التعليق إذا كنت تريد استخدام الخطوط الأصلية
+# ملاحظة: للتطوير والاختبار فقط - استخدم البدائل المفتوحة للإنتاج
+# RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+#     echo "deb http://deb.debian.org/debian bookworm contrib" >> /etc/apt/sources.list && \
+#     apt-get update && \
+#     apt-get install -y ttf-mscorefonts-installer && \
+#     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 EXPOSE 80
