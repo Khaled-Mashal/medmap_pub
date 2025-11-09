@@ -28,8 +28,20 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# نسخ إعدادات الخطوط
+COPY fonts.conf /etc/fonts/local.conf
+
 # نسخ جميع الملفات المنشورة
 COPY . .
+
+# نسخ خطوط Windows إذا كانت موجودة (اختياري)
+RUN if [ -d "windows-fonts" ]; then \
+        mkdir -p /usr/share/fonts/truetype/msfonts && \
+        cp -r windows-fonts/*.ttf /usr/share/fonts/truetype/msfonts/ 2>/dev/null || true; \
+    fi
+
+# تحديث كاش الخطوط
+RUN fc-cache -f -v
 
 # إنشاء مجلد uploads إذا لم يكن موجوداً
 RUN mkdir -p /app/wwwroot/uploads && chmod -R 777 /app/wwwroot/uploads
