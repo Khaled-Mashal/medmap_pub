@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
     libc6-dev \
     fontconfig \
     fonts-dejavu \
+    fonts-dejavu-core \
+    fonts-dejavu-extra \
     fonts-liberation \
     fonts-liberation2 \
     fonts-noto \
@@ -17,7 +19,8 @@ RUN apt-get update && apt-get install -y \
     fonts-kacst \
     fonts-kacst-one \
     fonts-farsiweb \
-    ttf-mscorefonts-installer \
+    fonts-freefont-ttf \
+    fonts-opensymbol \
     && fc-cache -f -v \
     && rm -rf /var/lib/apt/lists/*
 
