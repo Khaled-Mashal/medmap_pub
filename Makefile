@@ -49,6 +49,11 @@ update: ## تحديث التطبيق
 	@chmod +x update.sh
 	@./update.sh
 
+update-frontend: ## تحديث الواجهة الأمامية فقط
+	@echo "$(GREEN)🎨 تحديث الواجهة الأمامية...$(NC)"
+	@chmod +x update-frontend.sh
+	@./update-frontend.sh
+
 ssl: ## إعداد SSL
 	@echo "$(GREEN)🔐 إعداد SSL...$(NC)"
 	@chmod +x setup-ssl.sh
