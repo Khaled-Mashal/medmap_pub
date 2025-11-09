@@ -1,0 +1,36 @@
+# Environment files
+.env
+
+# Backups
+backups/
+*.sql
+*.tar.gz
+
+# SSL Certificates
+nginx/ssl/*.pem
+nginx/ssl/*.key
+
+# Logs
+*.log
+nginx/logs/
+
+# Docker volumes data
+postgres_data/
+uploads_data/
+frontend_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+

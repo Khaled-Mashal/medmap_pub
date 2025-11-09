@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  # قاعدة بيانات PostgreSQL
+  postgres:
+    image: postgres:16-alpine
+    container_name: medmap_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: medical_services_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      # حفظ البيانات بشكل دائم
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - medmap_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # تطبيق API
+  api:
+    build:
+      context: ./publish
+      dockerfile: Dockerfile
+    container_name: medmap_api
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=medical_services_db;Username=postgres;Password=${POSTGRES_PASSWORD:-admin}
+    volumes:
+      # حفظ الملفات المرفوعة بشكل دائم
+      - uploads_data:/app/wwwroot/uploads
+      # حفظ ملفات الواجهة الأمامية
+      - frontend_data:/app/wwwroot/build
+    ports:
+      - "5000:80"
+    networks:
+      - medmap_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: medmap_nginx
+    restart: always
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - nginx_logs:/var/log/nginx
+    networks:
+      - medmap_network
+
+# الشبكات
+networks:
+  medmap_network:
+    driver: bridge
+
+# Volumes للحفاظ على البيانات
+volumes:
+  # بيانات PostgreSQL
+  postgres_data:
+    driver: local
+  # الملفات المرفوعة
+  uploads_data:
+    driver: local
+  # ملفات الواجهة الأمامية
+  frontend_data:
+    driver: local
+  # سجلات Nginx
+  nginx_logs:
+    driver: local
+

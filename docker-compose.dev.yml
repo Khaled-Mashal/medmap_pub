@@ -1,0 +1,47 @@
+version: '3.8'
+
+# ملف Docker Compose للتطوير والاختبار المحلي
+# الاستخدام: docker-compose -f docker-compose.dev.yml up
+
+services:
+  # قاعدة بيانات PostgreSQL للتطوير
+  postgres:
+    image: postgres:16-alpine
+    container_name: medmap_postgres_dev
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: medical_services_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - medmap_dev_network
+
+  # pgAdmin للإدارة (اختياري)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: medmap_pgadmin_dev
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@medmap.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "5050:80"
+    networks:
+      - medmap_dev_network
+    depends_on:
+      - postgres
+
+networks:
+  medmap_dev_network:
+    driver: bridge
+
+volumes:
+  postgres_dev_data:
+    driver: local
+
