@@ -1,10 +1,24 @@
 # استخدام صورة ASP.NET Core Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-# تثبيت المكتبات المطلوبة لـ DevExpress و System.Drawing
+# تثبيت المكتبات المطلوبة لـ DevExpress و System.Drawing والخطوط
 RUN apt-get update && apt-get install -y \
     libgdiplus \
     libc6-dev \
+    fontconfig \
+    fonts-dejavu \
+    fonts-liberation \
+    fonts-liberation2 \
+    fonts-noto \
+    fonts-noto-core \
+    fonts-noto-ui-core \
+    fonts-noto-color-emoji \
+    fonts-arabeyes \
+    fonts-kacst \
+    fonts-kacst-one \
+    fonts-farsiweb \
+    ttf-mscorefonts-installer \
+    && fc-cache -f -v \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
