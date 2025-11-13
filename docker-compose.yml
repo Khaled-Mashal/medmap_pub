@@ -40,6 +40,7 @@ services:
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=medical_services_db;Username=postgres;Password=${POSTGRES_PASSWORD:-admin}
       # متغيرات البيئة لـ fontconfig و Skia
       - FONTCONFIG_PATH=/etc/fonts:/usr/share/fontconfig:/app/Fonts
+      - FONTCONFIG_FILE=/etc/fonts/fonts.conf
       - SKIA_FONT_CACHE_LIMIT=8
       - DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
     volumes:
