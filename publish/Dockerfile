@@ -61,12 +61,8 @@ EXPOSE 443
 
 # تعيين متغيرات البيئة لـ fontconfig و Skia
 ENV FONTCONFIG_PATH=/etc/fonts:/usr/share/fontconfig:/app/Fonts
-ENV FONTCONFIG_FILE=/etc/fonts/fonts.conf
 ENV SKIA_FONT_CACHE_LIMIT=8
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
-
-# نسخ إعدادات الخطوط
-COPY fonts.conf /etc/fonts/local.conf
 
 # نسخ جميع الملفات المنشورة (يشمل مجلد Fonts)
 COPY . .

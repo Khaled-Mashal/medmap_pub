@@ -44,6 +44,11 @@ check-fonts: ## التحقق من الخطوط في Docker
 	@chmod +x check-fonts.sh
 	@./check-fonts.sh
 
+check-skia: ## التحقق من Skia Dependencies
+	@echo "$(GREEN)🔍 التحقق من Skia Dependencies...$(NC)"
+	@chmod +x check-skia-dependencies.sh
+	@./check-skia-dependencies.sh
+
 backup: ## عمل نسخة احتياطية
 	@echo "$(GREEN)💾 عمل نسخة احتياطية...$(NC)"
 	@chmod +x backup.sh
