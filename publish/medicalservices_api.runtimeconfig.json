@@ -11,7 +11,20 @@
         "version": "8.0.18"
       }
     ],
+    "runtimeOptions": {
+      "configProperties": {
+        "System.Drawing.EnableUnixSupport": true,
+        "DevExpress.UseSkia": "true",
+        "DEVEXPRESS_USE_SKIA": "true",
+        "DX_USE_SKIA": "true",
+        "System.Globalization.Invariant": false,
+        "System.Runtime.TieredCompilation": true,
+        "System.Runtime.TieredPGO": true
+      }
+    },
     "configProperties": {
+      "System.Drawing.EnableUnixSupport": true,
+      "DevExpress.UseSkia": true,
       "System.GC.Server": true,
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
       "System.Reflection.NullabilityInfoContext.IsSupported": true,

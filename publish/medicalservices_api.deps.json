@@ -21,7 +21,9 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.0",
           "QRCoder": "1.4.3",
           "Swashbuckle.AspNetCore": "6.6.2",
+          "System.Drawing.Common": "8.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.1.2",
+          "System.Text.Encoding.CodePages": "8.0.0",
           "runtimepack.Microsoft.NETCore.App.Runtime.linux-x64": "8.0.18",
           "runtimepack.Microsoft.AspNetCore.App.Runtime.linux-x64": "8.0.18"
         },
@@ -1324,7 +1326,7 @@
           "DevExpress.DataVisualization.Core": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.XtraCharts.v24.1.dll": {
@@ -1358,7 +1360,7 @@
       },
       "DevExpress.Data/24.1.7": {
         "dependencies": {
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Data.v24.1.dll": {
@@ -1400,7 +1402,7 @@
       "DevExpress.Drawing/24.1.7": {
         "dependencies": {
           "DevExpress.Data": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Drawing.v24.1.dll": {
@@ -1417,7 +1419,7 @@
           "SkiaSharp": "2.88.7",
           "SkiaSharp.HarfBuzz": "2.88.7",
           "SkiaSharp.NativeAssets.Linux": "2.88.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Drawing.v24.1.Skia.dll": {
@@ -1431,7 +1433,7 @@
           "DevExpress.Data": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.XtraGauges.v24.1.Core.dll": {
@@ -1446,7 +1448,7 @@
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Pdf.Core": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Office.v24.1.Core.dll": {
@@ -1459,7 +1461,7 @@
         "dependencies": {
           "DevExpress.Data": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
-          "System.Drawing.Common": "4.7.2",
+          "System.Drawing.Common": "8.0.0",
           "System.Formats.Asn1": "6.0.1",
           "System.Security.Cryptography.Pkcs": "6.0.3"
         },
@@ -1475,7 +1477,7 @@
           "DevExpress.Data": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Pdf.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Pdf.v24.1.Drawing.dll": {
@@ -1489,7 +1491,7 @@
           "DevExpress.Data": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.PivotGrid.v24.1.Core.dll": {
@@ -1504,7 +1506,7 @@
           "DevExpress.Drawing": "24.1.7",
           "DevExpress.Pdf.Core": "24.1.7",
           "DevExpress.Pdf.Drawing": "24.1.7",
-          "System.Drawing.Common": "4.7.2",
+          "System.Drawing.Common": "8.0.0",
           "System.Formats.Asn1": "6.0.1",
           "System.Security.Cryptography.Pkcs": "6.0.3",
           "System.ServiceModel.Http": "6.2.0"
@@ -1535,7 +1537,7 @@
           "DevExpress.Sparkline.Core": "24.1.7",
           "DevExpress.Xpo": "24.1.7",
           "System.CodeDom": "4.4.0",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.XtraReports.v24.1.dll": {
@@ -1551,7 +1553,7 @@
           "DevExpress.Office.Core": "24.1.7",
           "DevExpress.Pdf.Core": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.RichEdit.v24.1.Core.dll": {
@@ -1567,7 +1569,7 @@
           "DevExpress.Office.Core": "24.1.7",
           "DevExpress.Printing.Core": "24.1.7",
           "DevExpress.RichEdit.Core": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.RichEdit.v24.1.Export.dll": {
@@ -1580,7 +1582,7 @@
         "dependencies": {
           "DevExpress.Data": "24.1.7",
           "DevExpress.Drawing": "24.1.7",
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/net6.0/DevExpress.Sparkline.v24.1.Core.dll": {
@@ -1594,7 +1596,7 @@
           "DevExpress.Data": "24.1.7",
           "Microsoft.Extensions.DependencyInjection": "8.0.0",
           "System.Data.SqlClient": "4.8.6",
-          "System.Drawing.Common": "4.7.2",
+          "System.Drawing.Common": "8.0.0",
           "System.Formats.Asn1": "6.0.1",
           "System.Security.Cryptography.Pkcs": "6.0.3",
           "System.ServiceModel.Http": "6.2.0",
@@ -1827,7 +1829,7 @@
           "System.Collections.Immutable": "6.0.0",
           "System.Reflection.Metadata": "6.0.1",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Text.Encoding.CodePages": "6.0.0"
+          "System.Text.Encoding.CodePages": "8.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.dll": {
@@ -2247,7 +2249,7 @@
           "System.Buffers": "4.5.0"
         }
       },
-      "Microsoft.NETCore.Platforms/3.1.4": {},
+      "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.OpenApi/1.6.14": {
         "runtime": {
@@ -2263,14 +2265,11 @@
           "System.Security.Principal.Windows": "4.7.0"
         }
       },
-      "Microsoft.Win32.SystemEvents/4.7.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4"
-        },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {
-            "assemblyVersion": "4.0.2.0",
-            "fileVersion": "4.700.19.56404"
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
           }
         }
       },
@@ -2338,7 +2337,7 @@
       "runtime.any.System.Threading.Tasks/4.3.0": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0"
         }
       },
@@ -2530,15 +2529,14 @@
           }
         }
       },
-      "System.Drawing.Common/4.7.2": {
+      "System.Drawing.Common/8.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
-          "Microsoft.Win32.SystemEvents": "4.7.0"
+          "Microsoft.Win32.SystemEvents": "8.0.0"
         },
         "runtime": {
-          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
-            "assemblyVersion": "4.0.2.2",
-            "fileVersion": "4.700.21.6905"
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53105"
           }
         }
       },
@@ -2557,7 +2555,7 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0",
@@ -2576,14 +2574,14 @@
       },
       "System.Private.Uri/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "runtime.unix.System.Private.Uri": "4.3.0"
         }
       },
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
@@ -2614,7 +2612,7 @@
       },
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "runtime.any.System.Reflection.Primitives": "4.3.0"
@@ -2622,7 +2620,7 @@
       },
       "System.Runtime/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "runtime.any.System.Runtime": "4.3.0"
         }
@@ -2873,17 +2871,13 @@
       },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "runtime.any.System.Text.Encoding": "4.3.0"
         }
       },
-      "System.Text.Encoding.CodePages/6.0.0": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
-        }
-      },
+      "System.Text.Encoding.CodePages/8.0.0": {},
       "System.Text.Encodings.Web/8.0.0": {},
       "System.Text.Json/8.0.0": {
         "dependencies": {
@@ -2893,7 +2887,7 @@
       "System.Threading.Channels/6.0.0": {},
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.4",
+          "Microsoft.NETCore.Platforms": "1.1.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0",
           "runtime.any.System.Threading.Tasks": "4.3.0"
@@ -2901,7 +2895,7 @@
       },
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
-          "System.Drawing.Common": "4.7.2"
+          "System.Drawing.Common": "8.0.0"
         },
         "runtime": {
           "lib/netcoreapp3.0/System.Windows.Extensions.dll": {
@@ -3509,12 +3503,12 @@
       "path": "microsoft.net.http.headers/2.2.0",
       "hashPath": "microsoft.net.http.headers.2.2.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/3.1.4": {
+    "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9/y05/CuxE+j184Nr4KihhB9KcUkvGojmD4JV4Vt/mHhVZR+eOCD5WCM+CXye9K0OFMsaPXbN+IcaIpjgBGZmg==",
-      "path": "microsoft.netcore.platforms/3.1.4",
-      "hashPath": "microsoft.netcore.platforms.3.1.4.nupkg.sha512"
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.1.0": {
       "type": "package",
@@ -3537,12 +3531,12 @@
       "path": "microsoft.win32.registry/4.7.0",
       "hashPath": "microsoft.win32.registry.4.7.0.nupkg.sha512"
     },
-    "Microsoft.Win32.SystemEvents/4.7.0": {
+    "Microsoft.Win32.SystemEvents/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
-      "path": "microsoft.win32.systemevents/4.7.0",
-      "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+      "sha512": "sha512-9opKRyOKMCi2xJ7Bj7kxtZ1r9vbzosMvRrdEhVhDz8j8MoBGgB+WmC94yH839NPH+BclAjtQ/pyagvi/8gDLkw==",
+      "path": "microsoft.win32.systemevents/8.0.0",
+      "hashPath": "microsoft.win32.systemevents.8.0.0.nupkg.sha512"
     },
     "Mono.TextTemplating/2.2.1": {
       "type": "package",
@@ -3803,12 +3797,12 @@
       "path": "system.data.sqlclient/4.8.6",
       "hashPath": "system.data.sqlclient.4.8.6.nupkg.sha512"
     },
-    "System.Drawing.Common/4.7.2": {
+    "System.Drawing.Common/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-I2y4KBK3VCvU/WqE2xv7NjQ67maXHttkFSHYKgU2evrG9Yqh0oFjfORXt5hZTk+BVjdyFo2h0/YQZsca33BGmg==",
-      "path": "system.drawing.common/4.7.2",
-      "hashPath": "system.drawing.common.4.7.2.nupkg.sha512"
+      "sha512": "sha512-JkbHJjtI/dWc5dfmEdJlbe3VwgZqCkZRtfuWFh5GOv0f+gGCfBtzMpIVkmdkj2AObO9y+oiOi81UGwH3aBYuqA==",
+      "path": "system.drawing.common/8.0.0",
+      "hashPath": "system.drawing.common.8.0.0.nupkg.sha512"
     },
     "System.Formats.Asn1/6.0.1": {
       "type": "package",
@@ -3978,12 +3972,12 @@
       "path": "system.text.encoding/4.3.0",
       "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
     },
-    "System.Text.Encoding.CodePages/6.0.0": {
+    "System.Text.Encoding.CodePages/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ZFCILZuOvtKPauZ/j/swhvw68ZRi9ATCfvGbk1QfydmcXBkIWecWKn/250UH7rahZ5OoDBaiAudJtPvLwzw85A==",
-      "path": "system.text.encoding.codepages/6.0.0",
-      "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
+      "sha512": "sha512-OZIsVplFGaVY90G2SbpgU7EnCoOO5pw1t4ic21dBF3/1omrJFpAGoNAVpPyMVOC90/hvgkGG3VFqR13YgZMQfg==",
+      "path": "system.text.encoding.codepages/8.0.0",
+      "hashPath": "system.text.encoding.codepages.8.0.0.nupkg.sha512"
     },
     "System.Text.Encodings.Web/8.0.0": {
       "type": "package",
