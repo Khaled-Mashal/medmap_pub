@@ -1,12 +1,19 @@
 # استخدام صورة ASP.NET Core Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-# تثبيت المكتبات المطلوبة لـ DevExpress و System.Drawing والخطوط
+# تثبيت المكتبات الأساسية المطلوبة
 RUN apt-get update && apt-get install -y \
+    libc6 \
+    libicu-dev \
+    libfontconfig1 \
     libgdiplus \
     libc6-dev \
     fontconfig \
     software-properties-common \
+    && rm -rf /var/lib/apt/lists/*
+
+# تثبيت الخطوط
+RUN apt-get update && apt-get install -y \
     fonts-dejavu \
     fonts-dejavu-core \
     fonts-dejavu-extra \

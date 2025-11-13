@@ -39,6 +39,11 @@ health: ## فحص صحة النظام
 	@chmod +x health-check.sh
 	@./health-check.sh
 
+check-fonts: ## التحقق من الخطوط في Docker
+	@echo "$(GREEN)🔍 التحقق من الخطوط...$(NC)"
+	@chmod +x check-fonts.sh
+	@./check-fonts.sh
+
 backup: ## عمل نسخة احتياطية
 	@echo "$(GREEN)💾 عمل نسخة احتياطية...$(NC)"
 	@chmod +x backup.sh
