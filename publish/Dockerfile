@@ -40,13 +40,32 @@ EXPOSE 443
 # نسخ إعدادات الخطوط
 COPY fonts.conf /etc/fonts/local.conf
 
-# نسخ جميع الملفات المنشورة
+# نسخ جميع الملفات المنشورة (يشمل مجلد Fonts)
 COPY . .
+
+# التأكد من وجود مجلد Fonts وصلاحياته
+RUN if [ -d "Fonts" ]; then \
+        chmod -R 755 Fonts && \
+        echo "✅ مجلد Fonts موجود في /app/Fonts"; \
+        ls -la Fonts/ | head -10; \
+    else \
+        echo "⚠️ تحذير: مجلد Fonts غير موجود!"; \
+    fi
+
+# نسخ خطوط التطبيق إلى مجلد الخطوط في النظام (لدعم fontconfig)
+RUN if [ -d "Fonts" ]; then \
+        mkdir -p /usr/share/fonts/truetype/app-fonts && \
+        cp Fonts/*.TTF /usr/share/fonts/truetype/app-fonts/ 2>/dev/null || true && \
+        cp Fonts/*.ttf /usr/share/fonts/truetype/app-fonts/ 2>/dev/null || true && \
+        echo "✅ تم نسخ خطوط التطبيق إلى مجلد النظام"; \
+    fi
 
 # نسخ خطوط Windows إذا كانت موجودة (اختياري)
 RUN if [ -d "windows-fonts" ]; then \
         mkdir -p /usr/share/fonts/truetype/msfonts && \
-        cp -r windows-fonts/*.ttf /usr/share/fonts/truetype/msfonts/ 2>/dev/null || true; \
+        cp windows-fonts/*.ttf /usr/share/fonts/truetype/msfonts/ 2>/dev/null || true && \
+        cp windows-fonts/*.TTF /usr/share/fonts/truetype/msfonts/ 2>/dev/null || true && \
+        echo "✅ تم نسخ خطوط Windows من مجلد windows-fonts"; \
     fi
 
 # تحديث كاش الخطوط
