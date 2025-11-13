@@ -41,26 +41,43 @@ fi
 
 echo ""
 
-# 2. التحقق من مجلد الخطوط في النظام
+# 2. التحقق من مجلدات الخطوط في النظام
 echo "=========================================="
-echo "2️⃣  التحقق من مجلد النظام"
+echo "2️⃣  التحقق من مجلدات النظام"
 echo "=========================================="
 echo ""
 
+# 2.1 - /usr/share/fonts/truetype/app-fonts
+echo "📂 المجلد: /usr/share/fonts/truetype/app-fonts"
 if docker exec medmap_api test -d /usr/share/fonts/truetype/app-fonts; then
-    echo "✅ مجلد /usr/share/fonts/truetype/app-fonts موجود"
-    echo ""
-    echo "📁 محتويات المجلد:"
-    docker exec medmap_api ls -lh /usr/share/fonts/truetype/app-fonts/ | head -15
-    echo ""
-    
-    # عد الخطوط
-    SYSTEM_FONT_COUNT=$(docker exec medmap_api sh -c "ls /usr/share/fonts/truetype/app-fonts/*.TTF /usr/share/fonts/truetype/app-fonts/*.ttf 2>/dev/null | wc -l")
-    echo "📊 عدد الخطوط: $SYSTEM_FONT_COUNT"
+    echo "✅ موجود"
+    FONT_COUNT_1=$(docker exec medmap_api sh -c "ls /usr/share/fonts/truetype/app-fonts/*.TTF /usr/share/fonts/truetype/app-fonts/*.ttf 2>/dev/null | wc -l")
+    echo "   عدد الخطوط: $FONT_COUNT_1"
 else
-    echo "⚠️  مجلد /usr/share/fonts/truetype/app-fonts غير موجود"
+    echo "❌ غير موجود"
 fi
+echo ""
 
+# 2.2 - /usr/local/share/fonts
+echo "📂 المجلد: /usr/local/share/fonts"
+if docker exec medmap_api test -d /usr/local/share/fonts; then
+    echo "✅ موجود"
+    FONT_COUNT_2=$(docker exec medmap_api sh -c "ls /usr/local/share/fonts/*.TTF /usr/local/share/fonts/*.ttf 2>/dev/null | wc -l")
+    echo "   عدد الخطوط: $FONT_COUNT_2"
+else
+    echo "❌ غير موجود"
+fi
+echo ""
+
+# 2.3 - /usr/share/fonts/truetype/msttcorefonts
+echo "📂 المجلد: /usr/share/fonts/truetype/msttcorefonts"
+if docker exec medmap_api test -d /usr/share/fonts/truetype/msttcorefonts; then
+    echo "✅ موجود"
+    FONT_COUNT_3=$(docker exec medmap_api sh -c "ls /usr/share/fonts/truetype/msttcorefonts/*.TTF /usr/share/fonts/truetype/msttcorefonts/*.ttf 2>/dev/null | wc -l")
+    echo "   عدد الخطوط: $FONT_COUNT_3"
+else
+    echo "❌ غير موجود"
+fi
 echo ""
 
 # 3. التحقق من fontconfig
