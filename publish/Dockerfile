@@ -1,48 +1,69 @@
 # استخدام صورة ASP.NET Core Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-# تثبيت المكتبات الأساسية المطلوبة
+# تثبيت dependencies مطلوبة لـ Skia و DevExpress
 RUN apt-get update && apt-get install -y \
+    # Native libraries أساسية لـ Skia
+    libfontconfig1 \
+    libfontconfig1-dev \
+    libfreetype6 \
+    libfreetype6-dev \
+    # مكتبات أساسية
     libc6 \
     libicu-dev \
-    libfontconfig1 \
     libgdiplus \
     libc6-dev \
     fontconfig \
     software-properties-common \
+    # أدوات مساعدة
+    curl \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# تثبيت الخطوط
+# تثبيت الخطوط الأساسية
 RUN apt-get update && apt-get install -y \
+    # خطوط Liberation (بديل Arial, Times, Courier)
+    fonts-liberation \
+    fonts-liberation2 \
+    # خطوط DejaVu (بديل Verdana, Tahoma)
     fonts-dejavu \
     fonts-dejavu-core \
     fonts-dejavu-extra \
-    fonts-liberation \
-    fonts-liberation2 \
+    # خطوط Noto (دعم Unicode شامل)
     fonts-noto \
     fonts-noto-core \
     fonts-noto-ui-core \
     fonts-noto-color-emoji \
+    # خطوط عربية
     fonts-arabeyes \
     fonts-kacst \
     fonts-kacst-one \
     fonts-farsiweb \
+    # خطوط إضافية
     fonts-freefont-ttf \
     fonts-opensymbol \
     && rm -rf /var/lib/apt/lists/*
 
 # (اختياري) تثبيت خطوط Microsoft Core Fonts
-# قم بإلغاء التعليق إذا كنت تريد استخدام الخطوط الأصلية
-# ملاحظة: للتطوير والاختبار فقط - استخدم البدائل المفتوحة للإنتاج
-# RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
-#     echo "deb http://deb.debian.org/debian bookworm contrib" >> /etc/apt/sources.list && \
-#     apt-get update && \
-#     apt-get install -y ttf-mscorefonts-installer && \
-#     rm -rf /var/lib/apt/lists/*
+# مُنصح به لتوافق أفضل مع DevExpress
+RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+    echo "deb http://deb.debian.org/debian bookworm contrib" >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y ttf-mscorefonts-installer && \
+    rm -rf /var/lib/apt/lists/*
+
+# تحديث ذاكرة الخطوط
+RUN fc-cache -fv
 
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+
+# تعيين متغيرات البيئة لـ fontconfig و Skia
+ENV FONTCONFIG_PATH=/etc/fonts:/usr/share/fontconfig:/app/Fonts
+ENV FONTCONFIG_FILE=/etc/fonts/fonts.conf
+ENV SKIA_FONT_CACHE_LIMIT=8
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 # نسخ إعدادات الخطوط
 COPY fonts.conf /etc/fonts/local.conf
@@ -103,9 +124,16 @@ RUN chmod -R 755 /usr/share/fonts/truetype/app-fonts 2>/dev/null || true && \
     chmod -R 755 /usr/local/share/fonts 2>/dev/null || true && \
     echo "✅ تم تعيين الصلاحيات"
 
-# تحديث كاش الخطوط في جميع المجلدات
+# تحديث كاش الخطوط في جميع المجلدات (مهم جداً لـ Skia)
 RUN fc-cache -f -v && \
     echo "✅ تم تحديث كاش الخطوط"
+
+# التحقق من تثبيت المكتبات المطلوبة لـ Skia
+RUN echo "🔍 التحقق من Native Libraries..." && \
+    ldconfig -p | grep fontconfig && echo "✅ libfontconfig موجودة" || echo "❌ libfontconfig مفقودة" && \
+    ldconfig -p | grep freetype && echo "✅ libfreetype موجودة" || echo "❌ libfreetype مفقودة" && \
+    fc-list | grep -i arial && echo "✅ خطوط Arial متاحة" || echo "⚠️ خطوط Arial غير متاحة" && \
+    fc-list | grep -i liberation && echo "✅ خطوط Liberation متاحة" || echo "⚠️ خطوط Liberation غير متاحة"
 
 # إنشاء مجلد uploads إذا لم يكن موجوداً
 RUN mkdir -p /app/wwwroot/uploads && chmod -R 777 /app/wwwroot/uploads
