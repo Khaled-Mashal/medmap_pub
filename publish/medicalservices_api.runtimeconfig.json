@@ -13,7 +13,7 @@
     ],
     "runtimeOptions": {
       "configProperties": {
-        "System.Drawing.EnableUnixSupport": true,
+        "System.Drawing.EnableUnixSupport": false,
         "DevExpress.UseSkia": "true",
         "DEVEXPRESS_USE_SKIA": "true",
         "DX_USE_SKIA": "true",
@@ -23,8 +23,8 @@
       }
     },
     "configProperties": {
-      "System.Drawing.EnableUnixSupport": true,
       "DevExpress.UseSkia": true,
+      "System.Drawing.EnableUnixSupport": false,
       "System.GC.Server": true,
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
       "System.Reflection.NullabilityInfoContext.IsSupported": true,
