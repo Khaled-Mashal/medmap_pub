@@ -23,7 +23,7 @@ case $choice in
         echo "🔌 الاتصال بقاعدة البيانات..."
         docker-compose exec postgres psql -U postgres -d medical_services_db
         ;;
-    
+
     2)
         BACKUP_FILE="backups/database_$(date +%Y%m%d_%H%M%S).sql"
         mkdir -p backups
@@ -36,24 +36,24 @@ case $choice in
             echo "❌ فشل النسخ الاحتياطي"
         fi
         ;;
-    
+
     3)
         echo "📂 الملفات المتاحة:"
         ls -lh backups/*.sql 2>/dev/null
         echo ""
-        read -p "أدخل اسم الملف (مثال: backups/database_20240101_120000.sql): " backup_file
-        
+        read -p "أدخل اسم الملف: " backup_file
+
         if [ ! -f "$backup_file" ]; then
             echo "❌ الملف غير موجود"
             exit 1
         fi
-        
+
         echo "⚠️  تحذير: سيتم حذف جميع البيانات الحالية!"
         read -p "هل أنت متأكد؟ (yes/no): " confirm
-        
+
         if [ "$confirm" = "yes" ]; then
-            
-            echo "🗑️  حذف جميع الجداول القديمة..."
+
+            echo "🗑️  حذف جميع الجداول..."
             docker-compose exec -T postgres psql -U postgres -d medical_services_db <<EOF
 DO \$\$
 DECLARE
@@ -63,7 +63,7 @@ BEGIN
     EXECUTE 'SET session_replication_role = replica';
 
     -- حذف كل الجداول في schema public
-    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = ''public'') LOOP
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
         EXECUTE 'DROP TABLE IF EXISTS public.' || quote_ident(r.tablename) || ' CASCADE';
     END LOOP;
 
@@ -77,24 +77,25 @@ EOF
             docker-compose exec -T postgres psql -U postgres medical_services_db < "$backup_file"
 
             if [ $? -eq 0 ]; then
-                echo "✅ تمت الاستعادة بنجاح بدون أخطاء"
+                echo "✅ تمت الاستعادة بنجاح"
             else
                 echo "❌ فشلت الاستعادة"
+                exit 1
             fi
+
         else
             echo "❌ تم الإلغاء"
         fi
         ;;
-    
+
     4)
         echo "📊 حجم قاعدة البيانات:"
         docker-compose exec postgres psql -U postgres -d medical_services_db -c "
             SELECT 
-                pg_size_pretty(pg_database_size('medical_services_db')) as database_size,
-                pg_size_pretty(pg_total_relation_size('public.*')) as tables_size;
+                pg_size_pretty(pg_database_size('medical_services_db')) AS database_size;
         "
         ;;
-    
+
     5)
         echo "📋 الجداول في قاعدة البيانات:"
         docker-compose exec postgres psql -U postgres -d medical_services_db -c "
@@ -107,7 +108,7 @@ EOF
             ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
         "
         ;;
-    
+
     6)
         echo "🧹 تنظيف قاعدة البيانات..."
         docker-compose exec postgres psql -U postgres -d medical_services_db -c "VACUUM ANALYZE;"
@@ -117,36 +118,35 @@ EOF
             echo "❌ فشل التنظيف"
         fi
         ;;
-    
+
     7)
         echo "⚠️⚠️⚠️  تحذير خطير! ⚠️⚠️⚠️"
         echo "سيتم حذف جميع البيانات في قاعدة البيانات!"
-        echo ""
         read -p "اكتب 'DELETE ALL DATA' للتأكيد: " confirm
-        
+
         if [ "$confirm" = "DELETE ALL DATA" ]; then
-            echo "💾 عمل نسخة احتياطية أولاً..."
+            echo "💾 عمل نسخة احتياطية..."
             BACKUP_FILE="backups/before_reset_$(date +%Y%m%d_%H%M%S).sql"
             mkdir -p backups
             docker-compose exec -T postgres pg_dump -U postgres medical_services_db > "$BACKUP_FILE"
-            
+
             echo "🗑️  حذف قاعدة البيانات..."
             docker-compose exec postgres psql -U postgres -c "DROP DATABASE IF EXISTS medical_services_db;"
             docker-compose exec postgres psql -U postgres -c "CREATE DATABASE medical_services_db;"
-            
+
             echo "✅ تم إعادة تعيين قاعدة البيانات"
             echo "📝 تم حفظ نسخة احتياطية في: $BACKUP_FILE"
-            echo "⚠️  ستحتاج إلى إعادة تشغيل التطبيق لإنشاء الجداول"
+            echo "⚠️ ستحتاج إلى تشغيل التطبيق لإنشاء الجداول تلقائيًا"
         else
             echo "❌ تم الإلغاء"
         fi
         ;;
-    
+
     0)
         echo "👋 إلى اللقاء"
         exit 0
         ;;
-    
+
     *)
         echo "❌ اختيار غير صحيح"
         exit 1
