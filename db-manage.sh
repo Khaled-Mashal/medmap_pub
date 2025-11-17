@@ -52,10 +52,32 @@ case $choice in
         read -p "هل أنت متأكد؟ (yes/no): " confirm
         
         if [ "$confirm" = "yes" ]; then
+            
+            echo "🗑️  حذف جميع الجداول القديمة..."
+            docker-compose exec -T postgres psql -U postgres -d medical_services_db <<EOF
+DO \$\$
+DECLARE
+    r RECORD;
+BEGIN
+    -- تعطيل القيود الأجنبية
+    EXECUTE 'SET session_replication_role = replica';
+
+    -- حذف كل الجداول في schema public
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = ''public'') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS public.' || quote_ident(r.tablename) || ' CASCADE';
+    END LOOP;
+
+    -- إعادة تفعيل القيود
+    EXECUTE 'SET session_replication_role = DEFAULT';
+END
+\$\$;
+EOF
+
             echo "🔄 استعادة البيانات..."
             docker-compose exec -T postgres psql -U postgres medical_services_db < "$backup_file"
+
             if [ $? -eq 0 ]; then
-                echo "✅ تمت الاستعادة بنجاح"
+                echo "✅ تمت الاستعادة بنجاح بدون أخطاء"
             else
                 echo "❌ فشلت الاستعادة"
             fi
@@ -132,4 +154,3 @@ case $choice in
 esac
 
 echo ""
-
