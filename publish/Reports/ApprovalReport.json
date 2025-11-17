@@ -1,0 +1,224 @@
+{
+    "documentType": "ApprovalForm",
+    "pageSettings": {
+      "format": "A4",
+      "orientation": "portrait",
+      "dimensions_mm": {
+        "width": 210,
+        "height": 297
+      },
+      "backgroundColor": "#FFFFFF",
+      "language": "ar",
+      "direction": "rtl"
+    },
+    "globalStyles": {
+      "baseFontFamily": "Tahoma, Arial, sans-serif",
+      "baseFontSize_pt": 12,
+      "baseColor": "#000000",
+      "labelWeight": "bold",
+      "valueWeight": "normal"
+    },
+    "elements": [
+      {
+        "id": "mainFrame",
+        "type": "container",
+        "description": "الإطار الخارجي الرئيسي الذي يحيط بجميع المحتويات",
+        "position_mm": {
+          "x": 15,
+          "y": 15
+        },
+        "size_mm": {
+          "width": 180,
+          "height": 267
+        },
+        "style": {
+          "border": "0.5mm solid #4A4A4A",
+          "borderRadius_mm": 8,
+          "backgroundColor": "none"
+        }
+      },
+      {
+        "id": "headerTitle",
+        "type": "label",
+        "content": "بيانات الموافقة",
+        "description": "العنوان الموجود في أعلى يمين الصفحة",
+        "position_mm": {
+          "x": 145,
+          "y": 28
+        },
+        "size_mm": {
+          "width": 40,
+          "height": 10
+        },
+        "style": {
+          "backgroundColor": "#F0F0F0",
+          "border": "0.5mm solid #B0B0B0",
+          "borderRadius_mm": 5,
+          "font": {
+            "size_pt": 10,
+            "weight": "bold",
+            "color": "#111111"
+          },
+          "textAlign": "center",
+          "verticalAlign": "middle"
+        }
+      },
+      {
+        "id": "headerInfoBox",
+        "type": "shape",
+        "shape": "rectangle",
+        "description": "الإطار المحيط بالرقم والتاريخ في الهيدر",
+        "position_mm": {
+          "x": 25,
+          "y": 28
+        },
+        "size_mm": {
+          "width": 115,
+          "height": 10
+        },
+        "style": {
+          "border": "0.5mm solid #B0B0B0",
+          "borderRadius_mm": 5
+        }
+      },
+      {
+        "id": "docNumber",
+        "type": "text",
+        "content": "الرقم: 45451003",
+        "description": "حقل الرقم داخل إطار الهيدر",
+        "position_mm": {
+          "x": 80,
+          "y": 31.5
+        },
+        "style": {
+          "font": {
+            "size_pt": 12,
+            "weight": "normal"
+          }
+        }
+      },
+      {
+        "id": "docDate",
+        "type": "text",
+        "content": "التاريخ: 11/07/2025",
+        "description": "حقل التاريخ داخل إطار الهيدر",
+        "position_mm": {
+          "x": 30,
+          "y": 31.5
+        },
+        "style": {
+          "font": {
+            "size_pt": 12,
+            "weight": "normal"
+          }
+        }
+      },
+      {
+        "id": "mainBody",
+        "type": "fieldSet",
+        "description": "مجموعة حقول البيانات الرئيسية في وسط الصفحة",
+        "position_mm": {
+          "x_label_anchor": 185,
+          "x_value_anchor": 150,
+          "y_start": 70
+        },
+        "style": {
+          "label": {
+            "font": {
+              "size_pt": 14,
+              "weight": "bold"
+            },
+            "textAlign": "right",
+            "color": "#000000"
+          },
+          "value": {
+            "font": {
+              "size_pt": 14,
+              "weight": "normal"
+            },
+            "textAlign": "right",
+            "color": "#000000"
+          },
+          "rowSpacing_mm": 12
+        },
+        "fields": [
+          {
+            "id": "name",
+            "label": "الاسم:",
+            "value": "بيييييييييب ررير"
+          },
+          {
+            "id": "passportNumber",
+            "label": "رقم الجواز:",
+            "value": "0332565"
+          },
+          {
+            "id": "dob",
+            "label": "تاريخ الميلاد:",
+            "value": "11/27/2025"
+          },
+          {
+            "id": "placeOfArrival",
+            "label": "جهة القدوم:",
+            "value": "المملكة العربية السعودية"
+          },
+          {
+            "id": "remarks",
+            "label": "ملاحظات:",
+            "value": "بييب"
+          }
+        ]
+      },
+      {
+        "id": "qrCode",
+        "type": "image",
+        "description": "رمز الاستجابة السريعة (QR Code) في أسفل اليسار",
+        "position_mm": {
+          "x": 28,
+          "y": 220
+        },
+        "size_mm": {
+          "width": 34,
+          "height": 34
+        },
+        "style": {
+          "border": "0.5mm solid #333333",
+          "padding_mm": 2
+        },
+        "value_placeholder": "QR_CODE_DATA"
+      },
+      {
+        "id": "footerNotes",
+        "type": "bulletList",
+        "description": "قسم التنويهات في أسفل الصفحة",
+        "position_mm": {
+          "x_anchor_right": 185,
+          "y_start": 220
+        },
+        "title": "تنويه:",
+        "style": {
+          "font": {
+            "size_pt": 10,
+            "weight": "normal"
+          },
+          "title": {
+            "font": {
+              "size_pt": 12,
+              "weight": "bold"
+            },
+            "underline": true
+          },
+          "lineSpacing_mm": 7,
+          "bullet": "-",
+          "textAlign": "right"
+        },
+        "items": [
+          "تطبع الموافقة بشكل واضح وبدون اخفاء معالمها حسب المصدر",
+          "صلاحية الجواز لاتقل عن ستة أشهر",
+          "صلاحية الموافقة تنتهي بعد مرور 30 يوم من تاريخ صدورها"
+        ]
+      }
+    ]
+  }
+
+
