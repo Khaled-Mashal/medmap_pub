@@ -14,15 +14,19 @@ services:
       - G4F_DEBUG=false
       - ENVIRONMENT=production
       - UVICORN_LOG_LEVEL=info
-    ports:
-      - "1337:1337"
     volumes:
       - ./g4f/har_and_cookies:/app/har_and_cookies
       - ./g4f/generated_media:/app/generated_media
       - ./logs/g4f:/app/logs
     networks:
-      - optru-network
+      - medmap_network
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:1337/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   # قاعدة بيانات PostgreSQL
   postgres:
@@ -92,6 +96,7 @@ services:
     restart: always
     depends_on:
       - api
+      - g4f-api
     ports:
       - "80:80"
       - "443:443"
