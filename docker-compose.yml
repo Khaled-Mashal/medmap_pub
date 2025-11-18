@@ -19,6 +19,7 @@ services:
       - G4F_DEBUG=false
       - ENVIRONMENT=production
       - UVICORN_LOG_LEVEL=info
+      - GEMINI_COOKIE=g.a0002gieiRz6tr0ur003BaP_L9hZ4u6TkWfOb2AUcXddpSoYMxwBNNrGjxHJvEjCT5jrW30buQACgYKAfcSARcSFQHGX2MiTI_hHZ0ie0NymiLhpjDsZRoVAUF8yKpwL5jsoHc4DacoGFvhQP9d0076
     ports:
       - "1337:1337"      
     volumes:
