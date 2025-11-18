@@ -6,10 +6,10 @@ services:
   g4f-api:
     image: hlohaus789/g4f:latest-slim
     container_name: optru-g4f-api
+    user: root
     command: >
       sh -c "
       mkdir -p /app/har_and_cookies /app/generated_media /app/logs &&
-      chmod -R 777 /app/har_and_cookies /app/generated_media /app/logs &&
       python -m g4f.api.run --host 0.0.0.0 --port 1337 --workers 4 --no-debug
       "
     environment:
