@@ -14,6 +14,8 @@ services:
       - G4F_DEBUG=false
       - ENVIRONMENT=production
       - UVICORN_LOG_LEVEL=info
+    ports:
+      - "1337:1337"      
     volumes:
       - ./g4f/har_and_cookies:/app/har_and_cookies
       - ./g4f/generated_media:/app/generated_media
